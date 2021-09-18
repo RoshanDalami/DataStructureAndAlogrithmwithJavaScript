@@ -88,7 +88,7 @@ class SinglyLinkedList{
         return current
        
     }
-    set(index , value){
+    set(index , value){ // set the value at specific index
         let found = this.get(index)
         if(found){
             found.value = value
@@ -99,6 +99,31 @@ class SinglyLinkedList{
         }
 
     }
+    insert(index,value){
+        if(index < 0 || index > this.length){
+            return false
+        }
+        if(index === this.length){
+            this.push(value)
+            return true
+            
+        }
+        if(index === 0){
+           this.unshift(value)
+           return true
+        }
+        else{
+            var newNode = new Node(value)
+           let node = this.get(index-1);
+           var temp = node.next
+           node.next = newNode
+           newNode.next = temp
+           this.length ++;
+           return true
+        }
+    }
+
+
 }
 var list = new SinglyLinkedList()
 
@@ -106,6 +131,7 @@ list.push('how')
 list.push('you')
 list.push("Doin'")
 list.set(1,'yours')
+console.log(list.insert(0,'roshan'))
 console.log(list.get(0))
 console.log(list)
 // console.log(list.traverse())
