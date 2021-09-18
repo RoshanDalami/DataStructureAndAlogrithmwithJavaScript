@@ -72,7 +72,32 @@ class SinglyLinkedList{
         }
   
         this.length ++;//increase the length by one
-        return list // return the Linkedlist
+        return this // return the Linkedlist
+    }
+    get(index){ //get to get the value of the node
+        if(index < 0 || index>= this.length){
+            return null
+        }
+        let counter = 0;
+        var current = this.head ;
+        while(counter != index){
+            current =  current.next ;
+            counter ++ ;
+
+        }
+        return current
+       
+    }
+    set(index , value){
+        let found = this.get(index)
+        if(found){
+            found.value = value
+        }
+        else{
+            return false
+
+        }
+
     }
 }
 var list = new SinglyLinkedList()
@@ -80,7 +105,8 @@ var list = new SinglyLinkedList()
 list.push('how')
 list.push('you')
 list.push("Doin'")
-list.unshift('wtf')
+list.set(1,'yours')
+console.log(list.get(0))
 console.log(list)
 // console.log(list.traverse())
 
