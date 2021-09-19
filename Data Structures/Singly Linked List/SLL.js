@@ -122,6 +122,24 @@ class SinglyLinkedList{
            return true
         }
     }
+    remove(index){
+        if(index < 0 || index > this.length){
+            return undefined;
+        }
+        if(index === this.length - 1){
+            return this.pop()
+        }
+        if(index === 0){
+            return this.shift()
+        }
+        else{
+            let prevNode = this.get(index-1)
+            let currentNode = this.get(index)
+            prevNode.next = currentNode.next
+            this.length -- ; 
+            return currentNode
+        }
+    }
 
 
 }
@@ -131,6 +149,8 @@ list.push('how')
 list.push('you')
 list.push("Doin'")
 list.set(1,'yours')
+console.log(list.remove(1))
+list.remove(1)
 console.log(list.insert(0,'roshan'))
 console.log(list.get(0))
 console.log(list)
