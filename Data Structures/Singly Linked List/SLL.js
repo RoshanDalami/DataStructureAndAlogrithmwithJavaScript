@@ -140,6 +140,33 @@ class SinglyLinkedList{
             return currentNode
         }
     }
+    reverse(){
+        let head = this.head
+        let tail = this.tail
+        this.head = tail
+        this.tail = head
+        var next
+
+        let prev ;
+        let node = this.head
+        for(let i = 0 ; i < this.length ; i++){
+         next = node.next
+         node.next = prev
+         prev = node
+         node = next
+        }
+        return this
+
+    }
+    print(){
+        var arr=[]
+        var current = this.head
+        while(current){
+            arr.push(current.val);
+            current = current.next
+        }
+        console.log(arr)
+    }
 
 
 }
@@ -149,7 +176,8 @@ list.push('how')
 list.push('you')
 list.push("Doin'")
 list.set(1,'yours')
-console.log(list.remove(1))
+list.reverse()
+console.log(list.print())
 list.remove(1)
 console.log(list.insert(0,'roshan'))
 console.log(list.get(0))
