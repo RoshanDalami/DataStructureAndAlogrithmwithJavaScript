@@ -75,12 +75,74 @@ class DoublyLinkedList{
         this.length ++ ;
         return this;
     }
+    get(index){
+        if(index < 0 || index >= this.length){
+            return null ;
+        }
+        var midNode = Math.floor(this.length / 2);
+        if(index >= midNode){
+            var count = 0 ;
+        var current = this.head;
+        while(count != index){
+            current = current.next;
+            count ++;
+        }
+        return current
+        }else{
+            current = this.tail ;
+            count = this.length - 1 ;
+            while(count != index){
+                current = current.prev ;
+                count --;
+            }
+            return current
+        }
+    }
+    set(val,index){
+        var result = this.get(index)
+        if(result != null){
+                result.val = val
+                return true
+        }
+        else{
+            return false
+        }
+
+    }
+    insert(index , value)
+    {
+        if(index < 0 || index >= this.length){
+            return false ;
+        }
+        if(index === 0){
+           return this.unshift(value)
+        }
+        if(index === this.length ){
+           return this.push(value)
+        }
+       
+         var newNode = new Node(value)
+        var prevNode = this.get(index - 1);
+        var currentNode = prevNode.next;
+
+        currentNode.prev = newNode;
+        newNode.next = currentNode ;
+        prevNode.next = newNode ;
+        newNode.prev = prevNode ;
+        
+        
+        this.length ++ ;
+        return true;
+    }
+    
 }
 var list = new DoublyLinkedList()
 list.push(100)
 list.push(1)
 list.push(1000)
 list.push(150)
-list.shift()
 list.unshift(400)
+list.set(500,4)
+list.insert(5,4520)
+// console.log(list.get(1))
 console.log(list)
