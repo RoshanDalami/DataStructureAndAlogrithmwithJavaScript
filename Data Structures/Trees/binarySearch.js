@@ -22,6 +22,7 @@ class BinarySearchTree{
         var current = this.root ;
             while(true)
             {
+                if(val === current.val) return undefined;
                 if(val < current.val){
                     if(current.left === null ){
                         current.left = newNode ;
@@ -30,7 +31,7 @@ class BinarySearchTree{
                         current = current.left ;
 
                     }
-                }else if(val > current.val){
+                }else {
                     if(current.right === null){
                         current.right = newNode ;
                         return this;
