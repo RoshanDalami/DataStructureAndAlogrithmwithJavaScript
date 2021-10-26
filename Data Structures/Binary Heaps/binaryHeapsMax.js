@@ -26,6 +26,10 @@ class MaxBinaryHeap {
 
 
     }
+    remove(){
+        
+
+    }
 }
 let heap = new MaxBinaryHeap();
 heap.insert(41);
@@ -35,5 +39,5 @@ heap.insert(18);
 heap.insert(27);
 heap.insert(12);
 heap.insert(55);
-
+heap.remove()
 console.log(heap)
