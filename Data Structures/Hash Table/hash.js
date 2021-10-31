@@ -56,13 +56,40 @@ class HashTable {
     get(key){
      let hashIndex = this.hash(key)
      if(this.keyMap[hashIndex]){
-         for(let i = 0 ; i < this.keyMap[index].length ; i++ ){
-            if(this.keyMap[index][i][0] === key){
-                return this.keyMap[index][i]
+         for(let i = 0 ; i < this.keyMap[hashIndex].length ; i++ ){
+            if(this.keyMap[hashIndex][i][0] === key){
+                return this.keyMap[hashIndex][i]
             }
          }
      }
      return undefined
+    }
+    values(){
+        let valuesArray = [] ;
+        for(let i = 0 ; i < this.keyMap.length ; i++){
+           if(this.keyMap[i]){
+               for(let j = 0 ; j < this.keyMap[i].length ; j++){
+                   if(!valuesArray.includes(this.keyMap[i][j][1])){
+                    valuesArray.push(this.keyMap[i][j][1])
+                   }
+             
+               }
+           }
+        }
+        return valuesArray
+    }
+    keys(){
+        let keysArray = [];
+        for(let i = 0 ; i < this.keyMap.length ; i++){
+            if(this.keyMap[i]){
+                for(let j = 0 ; j < this.keyMap[i].length ; j++){
+                    if(!keysArray.includes(this.keyMap[i][j][0])){
+                        keysArray.push(this.keyMap[i][j][0])
+                    }
+                }
+            }
+        }
+        return keysArray
     }
 }
 let hashtable = new HashTable()
@@ -73,7 +100,11 @@ hashtable.set('black','#0046ff')
 hashtable.set('white','#fffffff')
 hashtable.set('orangered','#00ff66')
 hashtable.set('creamWhite','#0042ff')
-console.log(hashtable)
+console.log(hashtable.get('red'))
+console.log(hashtable.values())
+console.log(hashtable.keys())
+
+// console.log(hashtable)
 
 /*function hash(key){
     let total = 0 ;
