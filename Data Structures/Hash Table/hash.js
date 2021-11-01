@@ -102,7 +102,7 @@ hashtable.set('orangered','#00ff66')
 hashtable.set('creamWhite','#0042ff')
 console.log(hashtable.get('red'))
 console.log(hashtable.values())
-console.log(hashtable.keys())
+console.log(hashtable.keys( ))
 
 // console.log(hashtable)
 
