@@ -5,6 +5,7 @@ class Graph {
         this.adjacencyList = {}
     }
     addVertex(vertexName){
+        if(!this.adjacencyList[vertexName])
         this.adjacencyList[vertexName] = [];
     }
     addEdge(vertex1,vertex2){
@@ -14,8 +15,9 @@ class Graph {
         
     }
     removeEdge(vertex1,vertex2){
-       this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter((v) => v!== vertex2)
-       this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter((v) => v!== vertex1)
+        
+       this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter((v) => {v!== vertex2})
+       this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter((v) =>{v!== vertex1} )
     }
     removeVertex(vertex){
         while(this.adjacencyList[vertex].length){
@@ -30,6 +32,7 @@ graph.addVertex('Roshan')
 graph.addVertex('dalami')
 graph.addVertex('sunar')
 graph.addEdge('Roshan','dalami')
+graph.removeVertex('Roshan')
 graph.addEdge('dalami','sunar')
-graph.removeEdge('roshan','dalami')
+graph.addVertex('KingCobra')
 console.log(graph)
